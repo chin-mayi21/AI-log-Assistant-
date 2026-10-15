@@ -1,0 +1,266 @@
+[
+  {
+    "query": {
+      "project": "E-Commerce",
+      "service": "Payment API",
+      "log": "Card checkouts started failing after the processor endpoint stopped answering within its deadline."
+    },
+    "expected": {
+      "incident_type": "Payment Failure",
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "query": {
+      "project": "E-Commerce",
+      "service": "Payment API",
+      "log": "The payment handler cannot acquire a datastore session and the checkout authorization is rejected."
+    },
+    "expected": {
+      "incident_type": "Database Failure",
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "query": {
+      "project": "E-Commerce",
+      "service": "Payment API",
+      "log": "The same receipt reference is being requested for carts owned by different customers."
+    },
+    "expected": {
+      "incident_type": "Authorization Failure",
+      "severity": "LOW"
+    }
+  },
+  {
+    "query": {
+      "project": "E-Commerce",
+      "service": "Payment API",
+      "log": "A processor call has no final response yet; should another authorization be submitted?"
+    },
+    "expected": {
+      "incident_type": "Timeout",
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "query": {
+      "project": "E-Commerce",
+      "service": "Order Service",
+      "log": "Two packers received the same order event and the second state change did not apply."
+    },
+    "expected": {
+      "incident_type": "Transaction Failure",
+      "severity": "HIGH"
+    }
+  },
+  {
+    "query": {
+      "project": "E-Commerce",
+      "service": "Product Service",
+      "log": "Catalog details return an unexpected field shape after the storefront release."
+    },
+    "expected": {
+      "incident_type": "API Failure",
+      "severity": "HIGH"
+    }
+  },
+  {
+    "query": {
+      "project": "E-Commerce",
+      "service": "Product Service",
+      "log": "No catalog instance is passing its readiness probe, so the target group is empty."
+    },
+    "expected": {
+      "incident_type": "Service Unavailable",
+      "severity": "HIGH"
+    }
+  },
+  {
+    "query": {
+      "project": "E-Commerce",
+      "service": "Authentication Service",
+      "log": "A single shopper's account has sign-in attempts from many unfamiliar addresses."
+    },
+    "expected": {
+      "incident_type": "Security-related Anomaly",
+      "severity": "HIGH"
+    }
+  },
+  {
+    "query": {
+      "project": "HR Portal",
+      "service": "Authentication Service",
+      "log": "Staff login cannot reach the identity issuer, and session creation fails for everyone."
+    },
+    "expected": {
+      "incident_type": "Authentication Failure",
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "query": {
+      "project": "HR Portal",
+      "service": "Employee Service",
+      "log": "A team lead can no longer open employees assigned to their team after the role mapping changed."
+    },
+    "expected": {
+      "incident_type": "Authorization Failure",
+      "severity": "HIGH"
+    }
+  },
+  {
+    "query": {
+      "project": "HR Portal",
+      "service": "Payroll Service",
+      "log": "The pay calculation worker restarted after its memory usage climbed through a large pay batch."
+    },
+    "expected": {
+      "incident_type": "Resource Exhaustion",
+      "severity": "HIGH"
+    }
+  },
+  {
+    "query": {
+      "project": "HR Portal",
+      "service": "Payroll Service",
+      "log": "A worker is still waiting for the compensation dependency and the calculation deadline passed."
+    },
+    "expected": {
+      "incident_type": "Timeout",
+      "severity": "HIGH"
+    }
+  },
+  {
+    "query": {
+      "project": "HR Portal",
+      "service": "Database Service",
+      "log": "Reporting replica journal writes keep restarting as local journal storage fills."
+    },
+    "expected": {
+      "incident_type": "Database Failure",
+      "severity": "HIGH"
+    }
+  },
+  {
+    "query": {
+      "project": "HR Portal",
+      "service": "Employee Service",
+      "log": "A profile export identity asked for a bulk file outside its ordinary schedule."
+    },
+    "expected": {
+      "incident_type": "Security-related Anomaly",
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "query": {
+      "project": "HR Portal",
+      "service": "Notification Service",
+      "log": "The mail host lookup is failing on the worker and digests are staying in the queue."
+    },
+    "expected": {
+      "incident_type": "Network Failure",
+      "severity": "MEDIUM"
+    }
+  },
+  {
+    "query": {
+      "project": "Banking Platform",
+      "service": "Transaction Service",
+      "log": "A transfer could not finish both ledger legs before its debit reservation expired."
+    },
+    "expected": {
+      "incident_type": "Transaction Failure",
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "query": {
+      "project": "Banking Platform",
+      "service": "Payment Service",
+      "log": "The external bill provider is rejecting the updated merchant route."
+    },
+    "expected": {
+      "incident_type": "Payment Failure",
+      "severity": "HIGH"
+    }
+  },
+  {
+    "query": {
+      "project": "Banking Platform",
+      "service": "Account Service",
+      "log": "Sequential account references are being queried by one client identity."
+    },
+    "expected": {
+      "incident_type": "Security-related Anomaly",
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "query": {
+      "project": "Banking Platform",
+      "service": "Database Service",
+      "log": "Connections from account and transaction workers are refused at the client limit."
+    },
+    "expected": {
+      "incident_type": "Resource Exhaustion",
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "query": {
+      "project": "Banking Platform",
+      "service": "Account Service",
+      "log": "Customer balance requests cannot reach the ledger subnet after a network policy update."
+    },
+    "expected": {
+      "incident_type": "Network Failure",
+      "severity": "HIGH"
+    }
+  },
+  {
+    "query": {
+      "project": "Banking Platform",
+      "service": "Transaction Service",
+      "log": "Currency pair lacks a verified conversion reference and the transfer was rejected before posting."
+    },
+    "expected": {
+      "incident_type": "Data/Validation Error",
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "query": {
+      "project": "Banking Platform",
+      "service": "Account Service",
+      "log": "Every account API replica exits before opening its listener following deployment."
+    },
+    "expected": {
+      "incident_type": "Service Unavailable",
+      "severity": "CRITICAL"
+    }
+  },
+  {
+    "query": {
+      "project": "E-Commerce",
+      "service": "Product Service",
+      "log": "Search requests take longer since the latest filter started scanning the full catalog."
+    },
+    "expected": {
+      "incident_type": "Performance Degradation",
+      "severity": "MEDIUM"
+    }
+  },
+  {
+    "query": {
+      "project": "HR Portal",
+      "service": "Notification Service",
+      "log": "Worker startup rejects the outbound relay port loaded from the newest settings."
+    },
+    "expected": {
+      "incident_type": "Configuration Error",
+      "severity": "MEDIUM"
+    }
+  }
+]

@@ -1,0 +1,314 @@
+[
+  {
+    "id": "CASE-001",
+    "query": {
+      "project": "Platform Infrastructure",
+      "service": "Build Runner",
+      "deployment_stage": "Container Startup",
+      "raw_log": "Container exits immediately because the entrypoint command is missing from the image"
+    },
+    "expected": {
+      "incident_type": "Docker/Container Failure",
+      "probable_root_cause": "The configured container entrypoint is absent or invalid in the built image."
+    }
+  },
+  {
+    "id": "CASE-002",
+    "query": {
+      "project": "E-Commerce",
+      "service": "Payment API",
+      "deployment_stage": "Kubernetes Runtime",
+      "raw_log": "payment-api pod restarts repeatedly and Kubernetes reports CrashLoopBackOff"
+    },
+    "expected": {
+      "incident_type": "Kubernetes Deployment Failure",
+      "probable_root_cause": "The container exits repeatedly; prior-container logs and termination details are needed to identify why."
+    }
+  },
+  {
+    "id": "CASE-003",
+    "query": {
+      "project": "HR Portal",
+      "service": "Payroll Service",
+      "deployment_stage": "Image Pull",
+      "raw_log": "Kubelet cannot fetch the private payroll image manifest from the registry"
+    },
+    "expected": {
+      "incident_type": "Image Pull Failure",
+      "probable_root_cause": "The image reference or registry authorization is preventing the node from retrieving the image."
+    }
+  },
+  {
+    "id": "CASE-004",
+    "query": {
+      "project": "E-Commerce",
+      "service": "Payment API",
+      "deployment_stage": "Database Migration",
+      "raw_log": "ERROR: migration stopped because relation 'orders' does not exist"
+    },
+    "expected": {
+      "incident_type": "Database Migration Failure",
+      "probable_root_cause": "A prerequisite migration or the expected target database schema is missing."
+    }
+  },
+  {
+    "id": "CASE-005",
+    "query": {
+      "project": "HR Portal",
+      "service": "Employee Service",
+      "deployment_stage": "Container Startup",
+      "raw_log": "Required EMPLOYEE_DIRECTORY_URL setting is absent from the pod environment"
+    },
+    "expected": {
+      "incident_type": "Environment Variable Error",
+      "probable_root_cause": "The deployment does not inject a required environment variable."
+    }
+  },
+  {
+    "id": "CASE-006",
+    "query": {
+      "project": "Banking Platform",
+      "service": "Account Service",
+      "deployment_stage": "Service Connectivity",
+      "raw_log": "Socket open to account-ledger endpoint returned connection refused"
+    },
+    "expected": {
+      "incident_type": "Network/Connectivity Failure",
+      "probable_root_cause": "The target service may be stopped or not listening at the configured address and port."
+    }
+  },
+  {
+    "id": "CASE-007",
+    "query": {
+      "project": "Platform Infrastructure",
+      "service": "Build Runner",
+      "deployment_stage": "Dependency Resolution",
+      "raw_log": "CI resolver cannot satisfy incompatible pinned versions of the HTTP client"
+    },
+    "expected": {
+      "incident_type": "Version/Dependency Conflict",
+      "probable_root_cause": "Declared dependency constraints have no compatible resolution."
+    }
+  },
+  {
+    "id": "CASE-008",
+    "query": {
+      "project": "E-Commerce",
+      "service": "Order Service",
+      "deployment_stage": "Container Startup",
+      "raw_log": "Order listener could not bind because the configured host port is already occupied"
+    },
+    "expected": {
+      "incident_type": "Port Conflict",
+      "probable_root_cause": "Another process or container is already listening on the requested port."
+    }
+  },
+  {
+    "id": "CASE-009",
+    "query": {
+      "project": "HR Portal",
+      "service": "Employee Service",
+      "deployment_stage": "Kubernetes Health Check",
+      "raw_log": "New employee pods run but never pass the configured readiness endpoint probe"
+    },
+    "expected": {
+      "incident_type": "Health Check Failure",
+      "probable_root_cause": "Probe path, port, timing, or application readiness state is incorrect."
+    }
+  },
+  {
+    "id": "CASE-010",
+    "query": {
+      "project": "Platform Infrastructure",
+      "service": "Deployment Controller",
+      "deployment_stage": "Kubernetes Rollout",
+      "raw_log": "Production rollout exceeded its progress deadline while replacement pods stayed pending"
+    },
+    "expected": {
+      "incident_type": "Timeout",
+      "probable_root_cause": "The rollout did not make progress before its deadline; pod scheduling or readiness events should be checked."
+    }
+  },
+  {
+    "id": "CASE-011",
+    "query": {
+      "project": "Platform Infrastructure",
+      "service": "Build Runner",
+      "deployment_stage": "CI Workspace",
+      "raw_log": "Artifact packaging failed with permission denied writing to the workspace"
+    },
+    "expected": {
+      "incident_type": "Permission Error",
+      "probable_root_cause": "The runner identity cannot write to the workspace or artifact path."
+    }
+  },
+  {
+    "id": "CASE-012",
+    "query": {
+      "project": "HR Portal",
+      "service": "Notification Service",
+      "deployment_stage": "Service Connectivity",
+      "raw_log": "Resolver returned NXDOMAIN for the internal mail relay hostname"
+    },
+    "expected": {
+      "incident_type": "Network/Connectivity Failure",
+      "probable_root_cause": "The configured hostname is missing or unavailable in the current DNS scope."
+    }
+  },
+  {
+    "id": "CASE-013",
+    "query": {
+      "project": "Banking Platform",
+      "service": "Account Service",
+      "deployment_stage": "Service Connectivity",
+      "raw_log": "TLS handshake rejected the account backend because its certificate is expired"
+    },
+    "expected": {
+      "incident_type": "Network/Connectivity Failure",
+      "probable_root_cause": "The peer certificate is expired or its presented chain is not trusted."
+    }
+  },
+  {
+    "id": "CASE-014",
+    "query": {
+      "project": "E-Commerce",
+      "service": "Payment API",
+      "deployment_stage": "Kubernetes Runtime",
+      "raw_log": "Payment container was terminated by the kernel after crossing its memory limit"
+    },
+    "expected": {
+      "incident_type": "Resource Exhaustion",
+      "probable_root_cause": "The container exceeded its configured memory limit; inspect usage and workload changes."
+    }
+  },
+  {
+    "id": "CASE-015",
+    "query": {
+      "project": "Banking Platform",
+      "service": "Transaction Service",
+      "deployment_stage": "Database Connection",
+      "raw_log": "Database login rejected the configured transaction deployment identity"
+    },
+    "expected": {
+      "incident_type": "Authentication/Authorization Failure",
+      "probable_root_cause": "The supplied database identity or secret binding is invalid or lacks the needed permission."
+    }
+  },
+  {
+    "id": "CASE-016",
+    "query": {
+      "project": "E-Commerce",
+      "service": "Product Service",
+      "deployment_stage": "Build",
+      "raw_log": "Compiler failed while resolving an imported symbol in the catalog module"
+    },
+    "expected": {
+      "incident_type": "Build Failure",
+      "probable_root_cause": "A source compile error prevents artifact generation."
+    }
+  },
+  {
+    "id": "CASE-017",
+    "query": {
+      "project": "HR Portal",
+      "service": "Payroll Service",
+      "deployment_stage": "Dependency Installation",
+      "raw_log": "Package index returned unavailable while the payroll lockfile was being installed"
+    },
+    "expected": {
+      "incident_type": "Dependency Failure",
+      "probable_root_cause": "The required dependency source or package is temporarily unavailable."
+    }
+  },
+  {
+    "id": "CASE-018",
+    "query": {
+      "project": "Platform Infrastructure",
+      "service": "Container Registry",
+      "deployment_stage": "Image Push",
+      "raw_log": "Registry layer upload stopped after the build artifact endpoint returned an error"
+    },
+    "expected": {
+      "incident_type": "CI/CD Pipeline Failure",
+      "probable_root_cause": "The artifact publication stage failed; verify registry state and artifact digest."
+    }
+  },
+  {
+    "id": "CASE-019",
+    "query": {
+      "project": "E-Commerce",
+      "service": "Order Service",
+      "deployment_stage": "Deployment Configuration",
+      "raw_log": "Rendered values point order callbacks to an invalid internal URL path"
+    },
+    "expected": {
+      "incident_type": "Configuration Error",
+      "probable_root_cause": "The deployed endpoint configuration does not match the service route contract."
+    }
+  },
+  {
+    "id": "CASE-020",
+    "query": {
+      "project": "Platform Infrastructure",
+      "service": "Kubernetes Cluster",
+      "deployment_stage": "Kubernetes Scheduling",
+      "raw_log": "Scheduler cannot place pods because eligible nodes do not have enough requested CPU"
+    },
+    "expected": {
+      "incident_type": "Kubernetes Deployment Failure",
+      "probable_root_cause": "Available node capacity is below workload requests or scheduling constraints."
+    }
+  },
+  {
+    "id": "CASE-021",
+    "query": {
+      "project": "Banking Platform",
+      "service": "Database Service",
+      "deployment_stage": "Persistent Storage",
+      "raw_log": "Database pod cannot mount its existing persistent volume after a storage controller error"
+    },
+    "expected": {
+      "incident_type": "Infrastructure Failure",
+      "probable_root_cause": "Storage attachment or control-plane state is blocking the existing data volume."
+    }
+  },
+  {
+    "id": "CASE-022",
+    "query": {
+      "project": "HR Portal",
+      "service": "Employee Service",
+      "deployment_stage": "Startup",
+      "raw_log": "Employee process exits while initializing an incompatible directory plugin"
+    },
+    "expected": {
+      "incident_type": "Service Startup Failure",
+      "probable_root_cause": "A startup dependency or plugin initialization fails before the service listener opens."
+    }
+  },
+  {
+    "id": "CASE-023",
+    "query": {
+      "project": "E-Commerce",
+      "service": "Payment API",
+      "deployment_stage": "Deployment Verification",
+      "raw_log": "Smoke test waits past its deadline for a processor response and has no final outcome"
+    },
+    "expected": {
+      "incident_type": "Timeout",
+      "probable_root_cause": "The downstream response exceeded the request deadline; verify request status before retrying."
+    }
+  },
+  {
+    "id": "CASE-024",
+    "query": {
+      "project": "Platform Infrastructure",
+      "service": "Deployment Controller",
+      "deployment_stage": "Deployment Verification",
+      "raw_log": "Release monitor reports an unfamiliar failure code without pod, runner, or request details"
+    },
+    "expected": {
+      "incident_type": "Unknown/Unclassified Failure",
+      "probable_root_cause": "Available output is insufficient to attribute the failure; collect correlated diagnostics first."
+    }
+  }
+]
