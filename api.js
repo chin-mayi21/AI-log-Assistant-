@@ -354,8 +354,18 @@ export async function getIncidents(projectId) {
   return incidents.map((incident) => ({ ...incident }));
 }
 
+function getApiBaseUrl() {
+  if (window.AI_LOG_ASSISTANT_API_URL) {
+    return window.AI_LOG_ASSISTANT_API_URL.replace(/\/+$/, "");
+  }
+  if (["localhost", "127.0.0.1"].includes(window.location.hostname)) {
+    return `${window.location.protocol}//${window.location.hostname}:8002`;
+  }
+  return window.location.origin;
+}
+
 export async function analyzeLogs({ project, service, log }) {
-  const baseUrl = window.AI_LOG_ASSISTANT_API_URL || "http://127.0.0.1:8002";
+  const baseUrl = getApiBaseUrl();
   const response = await fetch(`${baseUrl}/api/analyze`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -374,7 +384,7 @@ export async function analyzeLogs({ project, service, log }) {
 }
 
 export async function chatAssistant({ project, service, log, question, history, analysis }) {
-  const baseUrl = window.AI_LOG_ASSISTANT_API_URL || "http://127.0.0.1:8002";
+  const baseUrl = getApiBaseUrl();
   const response = await fetch(`${baseUrl}/api/chat`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

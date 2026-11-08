@@ -158,8 +158,9 @@ Run the API and the existing static frontend in separate terminals:
 & 'C:\Program Files\Python314\python.exe' -m http.server 4173 --bind 127.0.0.1
 ```
 
-Serve the project root on port 4173 (the dashboard uses `http://127.0.0.1:8002` by default).
-Set `window.AI_LOG_ASSISTANT_API_URL` before loading `app.js` to override the API address.
+Serve the project root on port 4173 (the dashboard uses port 8002 for the API on localhost).
+On non-local hosts, the dashboard uses the current origin for API requests. Set
+`window.AI_LOG_ASSISTANT_API_URL` before loading `app.js` to override the API address.
 Select a demo log, paste deployment output, or drop/browse a supported log file into the assistant
 panel and choose **Analyze Logs**. Follow up with a question in **Ask about your logs**; chat uses
 the current log and available analysis and supports short conversation history. Run the API endpoint
